@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2> Expenses Table </h2>
+
+<table class="table table-bordered">
+    <th><td>Date</td><td>Category</td><td>Description</td><td>value</td></th>
+    {% for expense in expenses %}
+    <tr><td>{{ expense.id }}</td><td>{{ expense.date }}</td><td>{{ expense.category }}</td><td>{{ expense.description }}</td>
+    <td>{{ expense.value }}</td></tr>
+    {% endfor %}
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if expenses.has_previous %}
+            <a href="?page={{ expenses.previous_page_number }}">Prev</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ expenses.number }} of {{ expenses.paginator.num_pages }}.
+        </span>
+
+        {% if expenses.has_next %}
+            <a href="?page={{ expenses.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+</div>
+
+
+
+<h2> Incomes Table </h2>
+
+<table class="table table-bordered">
+    <th><td>Date</td><td>Category</td><td>Description</td><td>value</td></th>
+    {% for inc in income %}
+    <tr><td>{{ inc.id }}</td><td>{{ inc.date }}</td><td>{{ inc.category }}</td><td>{{ inc.description }}</td>
+    <td>{{ inc.value }}</td></tr>
+    {% endfor %}
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if income.has_previous %}
+            <a href="?page={{ income.previous_page_number }}">Prev</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ income.number }} of {{ income.paginator.num_pages }}.
+        </span>
+
+        {% if income.has_next %}
+            <a href="?page={{ income.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content %}
