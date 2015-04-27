@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'Finances',
     'home',
+    'blog',
 )
 
 MIDDLEWARE_CLASSES = (
